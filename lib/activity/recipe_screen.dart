@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:food_recipi_app/activity/constant.dart';
 class RecipeScreen extends StatelessWidget {
   const RecipeScreen({super.key});
