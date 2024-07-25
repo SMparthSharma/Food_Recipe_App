@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipi_app/activity/constant.dart';
 import 'package:food_recipi_app/activity/home_screen.dart';
-import 'package:image_picker/image_picker.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

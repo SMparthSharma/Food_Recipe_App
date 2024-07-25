@@ -1,8 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipi_app/activity/constant.dart';
 import 'package:food_recipi_app/activity/recipe_screen.dart';
-import 'package:get/get.dart';
+import 'package:http/http.dart';
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -11,6 +13,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController searchController=TextEditingController();
+  getRecipe(String query) async {
+    String url="https://api.edamam.com/api/recipes/v2?type=public&q=ladoo&app_id=bacff06d&app_key=21d7a5e6d035e180d6276ca7544554e9%09";
+    Response response=await get(Uri.parse(url));
+    Map data=jsonDecode(response.body);
+    log(data.toString());
+    //print(data);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getRecipe("burger");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +62,19 @@ class _HomeState extends State<Home> {
                         borderRadius: BorderRadius.circular(12.0)
                       ),
                       child: TextField(
+                        controller: searchController,
                         cursorColor: kDarkColor,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          prefixIcon: Icon(Icons.search,color: Colors.grey,size: 34.0,),
+                          prefixIcon: IconButton( onPressed: () {
+                            if((searchController.text).replaceAll(" ", "")=="" ){
+                                print("Blank search");
+                            }
+                            else{
+                              getRecipe(searchController.text);
+                            }
+                          },
+                            icon: Icon(Icons.search,size: 34.0,color: kBlueColor,),),
                           hintText: 'Search for recipes',
                           hintStyle: TextStyle(color: Colors.grey,fontSize: 20.0)
                         ),
@@ -173,67 +198,63 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(height: 12.0,),
-              Container(color: Colors.transparent,
-                width: MediaQuery.of(context).size.width,
-                height: 180,
-                child: ListView.builder(
-                 // physics: NeverScrollableScrollPhysics(),
-                    itemCount: 4,
-                    scrollDirection: Axis.vertical,
-                  padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    itemBuilder: (context,index){
-                  return GestureDetector(
-                    onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>RecipeScreen())),
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 12.0),
-                      decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(20.0)
+              ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 4,
+                  scrollDirection: Axis.vertical,
+                padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  itemBuilder: (context,index){
+                return GestureDetector(
+                  onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>RecipeScreen())),
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 12.0),
+                    decoration: BoxDecoration(
+                        color: kPrimaryColor,
+                        borderRadius: BorderRadius.circular(20.0)
 
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      height:120 ,
-                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Image.asset('assets/images/Burger.png',height: 250.0,),
-                          SizedBox(width: 10.0,),
-                          Column(crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Breakfast",style: TextStyle(color: kBlueColor,fontSize: 14.0,fontFamily: 'Hellix-bold'),),
-                              Container(
-                                  width: 150.0,
-                                  child: Text("Burger fgdfhdhdfh",overflow: TextOverflow.ellipsis,style: TextStyle(color: kDarkColor,fontSize: 20.0,fontFamily: 'Hellix-bold',fontWeight: FontWeight.bold),)),
-                              Row(
-                                children: List.generate(5, (index)=>Icon(Icons.star,color: kOrangeColor,size: 20.0,),
-                                )
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.fireplace_outlined,color: Colors.grey,size: 15.0,),
-                                  SizedBox(width: 5.0,),
-                                  Text("500 calories",style: TextStyle(color: Colors.red,fontSize: 14.0,fontFamily: 'Hellix-bold'),),
-                                ],
-                              ),
-
-                            ],
-                          ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Container(
-                                height: 30.0,
-                                width: 35.0,
-                                child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: Colors.grey,))),
-                          )
-
-                        ],
-                      ),
                     ),
-                  );},
-        
-        
-                ),
+                    width: MediaQuery.of(context).size.width,
+                    height:120 ,
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset('assets/images/Burger.png',height: 250.0,),
+                        SizedBox(width: 10.0,),
+                        Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("Breakfast",style: TextStyle(color: kBlueColor,fontSize: 14.0,fontFamily: 'Hellix-bold'),),
+                            Container(
+                                width: 150.0,
+                                child: Text("Burger fgdfhdhdfh",overflow: TextOverflow.ellipsis,style: TextStyle(color: kDarkColor,fontSize: 20.0,fontFamily: 'Hellix-bold',fontWeight: FontWeight.bold),)),
+                            Row(
+                              children: List.generate(5, (index)=>Icon(Icons.star,color: kOrangeColor,size: 20.0,),
+                              )
+                            ),
+                            Row(
+                              children: [
+                                Icon(Icons.fireplace_outlined,color: Colors.grey,size: 15.0,),
+                                SizedBox(width: 5.0,),
+                                Text("500 calories",style: TextStyle(color: Colors.red,fontSize: 14.0,fontFamily: 'Hellix-bold'),),
+                              ],
+                            ),
+
+                          ],
+                        ),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: Container(
+                              height: 30.0,
+                              width: 35.0,
+                              child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: Colors.grey,))),
+                        )
+
+                      ],
+                    ),
+                  ),
+                );},
+
+
               ),
         
         
