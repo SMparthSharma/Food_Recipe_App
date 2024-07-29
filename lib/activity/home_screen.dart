@@ -230,7 +230,7 @@ class _HomeState extends State<Home> {
                                             fontSize: 15.0,
                                             color: kBlueColor),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8.0,
                                       ),
                                       Container(
