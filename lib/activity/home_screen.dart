@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.menu_rounded,
               size: 32.0,
             ),
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.notifications_outlined,
                   size: 32.0,
                 ))
@@ -68,35 +68,35 @@ class _HomeState extends State<Home> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(left: 16.0, right: 16.0),
+            margin: const EdgeInsets.only(left: 16.0, right: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 5.0,
                 ),
-                Text(
+                const Text(
                   'Welcome',
                   style: TextStyle(fontSize: 16.0, color: Colors.grey),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
-                Text(
+                const Text(
                   'What would you like to cook today?',
                   style: TextStyle(
                       fontFamily: 'Hellix-Bold',
                       fontWeight: FontWeight.bold,
                       fontSize: 25.0),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Row(
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             vertical: 6.0, horizontal: 6.0),
                         decoration: BoxDecoration(
                             color: kPrimaryColor,
@@ -116,14 +116,14 @@ class _HomeState extends State<Home> {
                                     getRecipe(searchController.text);
                                   }
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.search,
                                   size: 34.0,
                                   color: kBlueColor,
                                 ),
                               ),
                               hintText: 'Search for recipes',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                   color: Colors.grey, fontSize: 20.0)),
                         ),
                       ),
@@ -132,7 +132,7 @@ class _HomeState extends State<Home> {
                       width: 16.0,
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           vertical: 18.0, horizontal: 18.0),
                       decoration: BoxDecoration(
                           color: kPrimaryColor,
@@ -147,13 +147,13 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Today's Fresh Recipes",
                       style: TextStyle(
                           fontSize: 22.0,
@@ -164,7 +164,7 @@ class _HomeState extends State<Home> {
                       onTap: () {
                         print("object");
                       },
-                      child: Text(
+                      child: const Text(
                         "See All",
                         style: TextStyle(
                             fontSize: 18.0,
@@ -175,7 +175,7 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12.0,
                 ),
                 Container(
@@ -203,7 +203,7 @@ class _HomeState extends State<Home> {
                               Positioned(
                                   child: IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.favorite_border,
                                   color: Colors.grey,
                                 ),
@@ -223,7 +223,7 @@ class _HomeState extends State<Home> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Breakfast",
                                         style: TextStyle(
                                             fontFamily: 'Hellix-bold',
