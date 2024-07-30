@@ -235,7 +235,7 @@ class _HomeState extends State<Home> {
                                       ),
                                       Container(
                                           width: 180.0,
-                                          child: Text("Burger",
+                                          child: const Text("Burger",
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontFamily: 'Hellix-bold',
@@ -243,7 +243,7 @@ class _HomeState extends State<Home> {
                                                   color: kDarkColor,
                                                   fontWeight:
                                                       FontWeight.bold))),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8.0,
                                       ),
                                       Row(
@@ -256,7 +256,7 @@ class _HomeState extends State<Home> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8.0,
                                       ),
                                       Row(
