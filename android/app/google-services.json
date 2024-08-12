@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "826595421995",
+    "project_id": "loginapp-f5ca4",
+    "storage_bucket": "loginapp-f5ca4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826595421995:android:40bea15dafdc36b5605f6e",
+        "android_client_info": {
+          "package_name": "com.example.loginapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpqDodib5QJekyr6o77tTU2DR133RDARI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
